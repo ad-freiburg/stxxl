@@ -224,6 +224,8 @@ if(CXX_HAS_TEMPLATE_DEPTH)
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -ftemplate-depth=1024")
 endif()
 
+set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # enable C++14
 if(MSVC)
   # MSVC 11 or greater has C++11 automatically enabled
@@ -233,7 +235,7 @@ else()
   if(CXX_HAS_STD_CXX14)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14")
   else()
-    message(SEND_ERROR "Compiler does not support -std=c++14")
+    #message(SEND_ERROR "Compiler does not support -std=c++14")
   endif()
   # on MacOSX with clang we need to use libc++ for C++14 headers
   if(APPLE)
