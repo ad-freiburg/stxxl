@@ -203,7 +203,7 @@ int benchmark_sort(int argc, char* argv[])
                        "Amount of data to sort (e.g. 1GiB)");
 
     size_t memsize = 256 * MB;
-    cp.add_bytes('M', "ram", memsize,
+    cp.add_bytes('M', "ram", static_cast<uint64_t>(memsize),
                  "Amount of RAM to use when sorting, default: 256 MiB");
 
     if (!cp.process(argc, argv))
