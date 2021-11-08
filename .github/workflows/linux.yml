@@ -20,7 +20,8 @@ jobs:
         compiler: [g++, clang++]
         shared: [YES, NO]
         standard: [11, 14, 17, 20]
-        build_type: [Debug, Release]
+        # Disable Debug
+        build_type: [Release]
 
     steps:
       - name: "Checkout Code"
