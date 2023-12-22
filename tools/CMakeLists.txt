@@ -10,14 +10,16 @@
 #  http://www.boost.org/LICENSE_1_0.txt)
 ############################################################################
 
-stxxl_build_tool(stxxl_tool
-  benchmark_sort.cpp
-  benchmark_pqueue.cpp
-  mlock.cpp
-  mallinfo.cpp
+if(STXXL_BUILD_EXTRAS)
+  stxxl_build_tool(stxxl_tool
+          benchmark_sort.cpp
+          benchmark_pqueue.cpp
+          mlock.cpp
+          mallinfo.cpp
   )
 
-install(TARGETS stxxl_tool RUNTIME DESTINATION ${INSTALL_BIN_DIR})
+  install(TARGETS stxxl_tool RUNTIME DESTINATION ${INSTALL_BIN_DIR})
+endif()
 
 add_subdirectory(benchmarks)
 add_subdirectory(extras)
