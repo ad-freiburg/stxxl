@@ -208,8 +208,14 @@ public:
 
 template <class OneDimArrayType, class DataType, class PosType>
 struct two2one_dim_array_adapter_base
-    : public std::iterator<std::random_access_iterator_tag, DataType, size_t>
 {
+    // Required typedefs for `std::iterator_traits`.
+    using iterator_category = std::random_access_iterator_tag;
+    using value_type = DataType;
+    using difference_type = size_t;
+    using pointer = value_type*;
+    using reference = value_type&;
+
     using one_dim_array_type = OneDimArrayType;
     using data_type = DataType;
     using pos_type = PosType;
@@ -410,11 +416,15 @@ struct two2one_dim_array_column_adapter
 
 template <typename ArrayType, typename ValueType, size_t modulo>
 class array_of_sequences_iterator
-    : public std::iterator<std::random_access_iterator_tag, ValueType, size_t>
 {
 public:
-    using array_type = ArrayType;
+    // Required typedefs for `std::iterator_traits`.
+    using iterator_category = std::random_access_iterator_tag;
     using value_type = ValueType;
+    using difference_type = size_t;
+    using pointer = value_type*;
+    using reference = value_type&;
+    using array_type = ArrayType;
 
 protected:
     size_t pos;
